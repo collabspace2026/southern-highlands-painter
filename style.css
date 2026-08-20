@@ -7,6 +7,7 @@
   --dark:#1a1a1a;
   --gray-bg:#f4f4f4;
   --footer-bar:#e4e4e4;
+  --content-width:1440px;
   --font-heading:'Barlow', sans-serif;
   --font-nav:'Barlow Semi Condensed', sans-serif;
   --font-body:'Roboto', sans-serif;
@@ -69,20 +70,21 @@ h1,h2,h3,h4{font-family:var(--font-heading);font-weight:700;margin:0 0 16px;colo
   z-index:50;
 }
 .header-inner{
-  max-width:1240px;
+  max-width:var(--content-width);
   margin:0 auto;
-  padding:18px 24px;
+  padding:24px 40px;
+  min-height:100px;
   display:flex;
   align-items:center;
-  gap:32px;
+  gap:40px;
 }
-.logo img{height:42px;width:auto;}
+.logo img{height:80px;width:auto;}
 .main-nav{flex:1;}
-.main-nav ul{display:flex;gap:28px;flex-wrap:wrap;}
+.main-nav ul{display:flex;gap:32px;flex-wrap:wrap;}
 .main-nav a{
   font-family:var(--font-nav);
   font-weight:600;
-  font-size:15px;
+  font-size:16px;
   text-transform:uppercase;
   color:var(--nav-text);
   letter-spacing:.3px;
@@ -102,7 +104,7 @@ h1,h2,h3,h4{font-family:var(--font-heading);font-weight:700;margin:0 0 16px;colo
 /* Hero */
 .hero{
   position:relative;
-  min-height:640px;
+  min-height:750px;
   display:flex;
   align-items:center;
   justify-content:center;
@@ -118,34 +120,34 @@ h1,h2,h3,h4{font-family:var(--font-heading);font-weight:700;margin:0 0 16px;colo
 .hero-panel{
   position:relative;
   z-index:1;
-  max-width:760px;
+  max-width:960px;
   text-align:center;
   background:rgba(0,0,0,.32);
-  padding:48px 40px;
+  padding:64px 56px;
   border-radius:2px;
 }
 .hero-panel h1{
   color:#fff;
-  font-size:36px;
-  margin-bottom:18px;
+  font-size:46px;
+  margin-bottom:22px;
 }
 .hero-panel p{
   color:#f2f2f2;
-  font-size:17px;
-  max-width:620px;
-  margin:0 auto 28px;
+  font-size:19px;
+  max-width:760px;
+  margin:0 auto 32px;
 }
 .hero-cta{
   display:flex;
   align-items:center;
   justify-content:center;
-  gap:22px;
+  gap:26px;
   flex-wrap:wrap;
 }
 .hero-or{
   font-family:var(--font-heading);
   font-weight:600;
-  font-size:20px;
+  font-size:22px;
   color:#fff;
 }
 .hero-or a{color:#fff;}
@@ -153,7 +155,7 @@ h1,h2,h3,h4{font-family:var(--font-heading);font-weight:700;margin:0 0 16px;colo
 
 /* Services */
 .services{
-  max-width:1240px;
+  max-width:var(--content-width);
   margin:0 auto;
   padding:80px 24px;
   text-align:center;
@@ -181,7 +183,7 @@ h1,h2,h3,h4{font-family:var(--font-heading);font-weight:700;margin:0 0 16px;colo
   padding:90px 24px;
 }
 .about-inner{
-  max-width:1240px;
+  max-width:var(--content-width);
   margin:0 auto;
   display:grid;
   grid-template-columns:1fr 1fr;
@@ -215,7 +217,7 @@ h1,h2,h3,h4{font-family:var(--font-heading);font-weight:700;margin:0 0 16px;colo
 
 /* Brands */
 .brands{
-  max-width:1240px;
+  max-width:var(--content-width);
   margin:0 auto;
   padding:70px 24px;
   text-align:center;
@@ -240,7 +242,7 @@ h1,h2,h3,h4{font-family:var(--font-heading);font-weight:700;margin:0 0 16px;colo
 /* Footer */
 .site-footer{background:#000;color:#fff;}
 .footer-main{
-  max-width:1240px;
+  max-width:var(--content-width);
   margin:0 auto;
   padding:64px 24px;
   display:grid;
