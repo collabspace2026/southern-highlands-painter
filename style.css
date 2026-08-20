@@ -70,8 +70,7 @@ h1,h2,h3,h4{font-family:var(--font-heading);font-weight:700;margin:0 0 16px;colo
   z-index:50;
 }
 .header-inner{
-  max-width:var(--content-width);
-  margin:0 auto;
+  width:100%;
   padding:24px 40px;
   min-height:100px;
   display:flex;
@@ -110,12 +109,6 @@ h1,h2,h3,h4{font-family:var(--font-heading);font-weight:700;margin:0 0 16px;colo
   justify-content:center;
   background:url('images/southern-highlands-home-painting-burradoo.jpg') center/cover no-repeat;
   padding:40px 20px;
-}
-.hero::before{
-  content:'';
-  position:absolute;
-  inset:0;
-  background:linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.55));
 }
 .hero-panel{
   position:relative;
@@ -228,15 +221,11 @@ h1,h2,h3,h4{font-family:var(--font-heading);font-weight:700;margin:0 0 16px;colo
   flex-wrap:wrap;
   align-items:center;
   justify-content:center;
-  gap:28px;
+  gap:20px;
 }
 .brands-row img{
-  height:70px;
-  width:auto;
-  max-width:160px;
-  object-fit:contain;
-  border:1px solid #eee;
-  padding:8px 14px;
+  width:191px;
+  height:auto;
 }
 
 /* Footer */
