@@ -144,7 +144,7 @@
       <article class="service-card">
         <a href="commercial-painting.html"><img src="images/commercial-painting-highlands.jpg" alt="Commercial Paint in Moss Vale"></a>
         <h3><a href="commercial-painting.html">Commercial Painting</a></h3>
-        <p>We have years of commercial painting experience. Whether you are aiming to refresh the paintwork of your office or have industrial work, we provide efficient, cost-effective painting solutions tailored to you.</p>
+        <p>We have years of commercial painting experience. Whether you&rsquo;re aiming to refresh the office or have industrial work, we provide efficient, cost-effective painting solutions tailored to you.</p>
         <a href="commercial-painting.html" class="btn btn-secondary">Learn More</a>
       </article>
 
@@ -261,6 +261,10 @@
     const open = nav.classList.toggle('open');
     toggle.setAttribute('aria-expanded', open);
   });
+  const siteHeader = document.querySelector('.site-header');
+  const setScrolled = () => siteHeader.classList.toggle('scrolled', window.scrollY > 20);
+  window.addEventListener('scroll', setScrolled);
+  setScrolled();
 </script>
 
 </body>

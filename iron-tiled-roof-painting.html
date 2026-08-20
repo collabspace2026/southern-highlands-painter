@@ -376,6 +376,10 @@
       item.classList.toggle('open');
     });
   });
+  const siteHeader = document.querySelector('.site-header');
+  const setScrolled = () => siteHeader.classList.toggle('scrolled', window.scrollY > 20);
+  window.addEventListener('scroll', setScrolled);
+  setScrolled();
 </script>
 
 </body>

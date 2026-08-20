@@ -123,24 +123,52 @@
 </section>
 
 <main>
-  <section class="contact-grid">
-    <div class="contact-intro">
-      <p><strong>Feel free to contact us today to discuss your needs and we&rsquo;d be only too happy to provide a free no-obligation quote.</strong></p>
-      <a href="#" class="reveal-email">Click to reveal email</a>
-      <p class="phone-line">&#128222; <a href="tel:0409661644">0409 661 644</a></p>
-    </div>
+  <section class="contact-section">
+    <div class="contact-grid">
+      <div class="contact-intro">
+        <h2>Let&rsquo;s Talk About Your Project</h2>
+        <p>Feel free to contact us today to discuss your needs and we&rsquo;d be only too happy to provide a free no-obligation quote.</p>
 
-    <form class="contact-form" id="contact-form">
-      <div class="form-row">
-        <input type="text" name="first_name" placeholder="First Name" required>
-        <input type="text" name="last_name" placeholder="Last Name" required>
+        <div class="contact-cta-list">
+          <a href="tel:0409661644" class="contact-cta">
+            <span class="icon">&#128222;</span>
+            <span>
+              <span class="label">Call Dan directly</span>
+              <span class="value">0409 661 644</span>
+            </span>
+          </a>
+          <a href="#" class="contact-cta reveal-email">
+            <span class="icon">&#9993;</span>
+            <span>
+              <span class="label">Email</span>
+              <span class="value">Click to reveal email</span>
+            </span>
+          </a>
+        </div>
+
+        <ul class="contact-trust">
+          <li>Free, no-obligation quote</li>
+          <li>25+ years local experience in the Southern Highlands</li>
+          <li>Family run &mdash; friendly, professional service</li>
+        </ul>
       </div>
-      <input type="tel" name="mobile" placeholder="Mobile Number" required>
-      <input type="email" name="email" placeholder="Email Address" required>
-      <textarea name="message" placeholder="Your message, let us know you location too if you can." required></textarea>
-      <button type="submit" class="btn btn-primary">Submit Form</button>
-      <p class="contact-note">Submitting opens your email app with this message ready to send to Dan.</p>
-    </form>
+
+      <div class="contact-form-card">
+        <h2>Request a Free Quote</h2>
+        <p class="form-sub">Fill in the form below and we&rsquo;ll get back to you as soon as possible.</p>
+        <form class="contact-form" id="contact-form">
+          <div class="form-row">
+            <input type="text" name="first_name" placeholder="First Name" required>
+            <input type="text" name="last_name" placeholder="Last Name" required>
+          </div>
+          <input type="tel" name="mobile" placeholder="Mobile Number" required>
+          <input type="email" name="email" placeholder="Email Address" required>
+          <textarea name="message" placeholder="Your message, let us know you location too if you can." required></textarea>
+          <button type="submit" class="btn btn-primary">Submit Form</button>
+          <p class="contact-note">Submitting opens your email app with this message ready to send to Dan.</p>
+        </form>
+      </div>
+    </div>
   </section>
 
   <section class="projects-section">
@@ -202,6 +230,10 @@
     const open = nav.classList.toggle('open');
     toggle.setAttribute('aria-expanded', open);
   });
+  const siteHeader = document.querySelector('.site-header');
+  const setScrolled = () => siteHeader.classList.toggle('scrolled', window.scrollY > 20);
+  window.addEventListener('scroll', setScrolled);
+  setScrolled();
 
   const form = document.getElementById('contact-form');
   form.addEventListener('submit', (e) => {
