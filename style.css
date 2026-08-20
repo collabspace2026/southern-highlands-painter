@@ -209,6 +209,9 @@ h1,h2,h3,h4{font-family:var(--font-heading);font-weight:700;margin:0 0 16px;colo
 .about-image img{border-radius:2px;width:100%;height:100%;object-fit:cover;}
 
 /* Brands */
+.brands-section{
+  background:#fafafa;
+}
 .brands{
   max-width:var(--content-width);
   margin:0 auto;
