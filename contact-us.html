@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Dan Eaton | Free Painting Quote — Southern Highlands</title>
+<meta name="description" content="Get in touch with Dan Eaton Painting for a free, no-obligation quote. Servicing Bowral, Moss Vale, Bundanoon, Burradoo and the Southern Highlands.">
+<link rel="icon" href="favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Semi+Condensed:wght@500;600;700&family=Roboto:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="logo">
+      <img src="images/logo-SML-Southern-Highlands-Painters.gif" alt="Southern Highlands Painters logo" width="150" height="42">
+    </a>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="residential-house-painting.html">Residential</a></li>
+        <li><a href="commercial-painting.html">Commercial &amp; Industrial</a></li>
+        <li><a href="iron-tiled-roof-painting.html">Roof</a></li>
+        <li><a href="floor-painting.html">Floor</a></li>
+        <li><a href="contact-us.html" class="active">Contact Us</a></li>
+      </ul>
+    </nav>
+    <a href="tel:0409661644" class="btn btn-call">CALL: 0409 661 644</a>
+    <button class="menu-toggle" aria-label="Menu Toggle" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<section class="page-title-bar">
+  <h1>Contact Us</h1>
+</section>
+
+<main>
+  <section class="contact-grid">
+    <div class="contact-intro">
+      <p><strong>Feel free to contact us today to discuss your needs and we&rsquo;d be only too happy to provide a free no-obligation quote.</strong></p>
+      <a href="#" class="reveal-email">Click to reveal email</a>
+      <p class="phone-line">&#128222; <a href="tel:0409661644">0409 661 644</a></p>
+    </div>
+
+    <form class="contact-form" id="contact-form">
+      <div class="form-row">
+        <input type="text" name="first_name" placeholder="First Name" required>
+        <input type="text" name="last_name" placeholder="Last Name" required>
+      </div>
+      <input type="tel" name="mobile" placeholder="Mobile Number" required>
+      <input type="email" name="email" placeholder="Email Address" required>
+      <textarea name="message" placeholder="Your message, let us know you location too if you can." required></textarea>
+      <button type="submit" class="btn btn-primary">Submit Form</button>
+      <p class="contact-note">Submitting opens your email app with this message ready to send to Dan.</p>
+    </form>
+  </section>
+
+  <section class="projects-section">
+    <h2>Recent Projects</h2>
+    <div class="projects-grid">
+      <img src="images/roof-painting-bowral.jpg" alt="Roof painting in progress, Bowral">
+      <img src="images/interior-house-painting-robertson.jpg" alt="Interior painting, Robertson">
+      <img src="images/commercial-painting-highlands.jpg" alt="Commercial painting, Southern Highlands">
+      <img src="images/floor-painting-southern-highlands.jpg" alt="Floor painting, Southern Highlands">
+      <img src="images/exterior-house-painting.jpg" alt="Exterior house painting, Bundanoon">
+      <img src="images/southern-highlands-home-painting-burradoo.jpg" alt="Home painting, Burradoo">
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-main">
+    <div class="footer-col footer-about">
+      <img src="images/logo-SML-Southern-Highlands-Painters.gif" alt="Southern Highlands Painters logo" width="150" height="42">
+      <p>Dan Eaton is a long-term Bundanoon resident, he and his team are experienced, friendly and professional. Servicing Bundanoon up to Bowral and out to Berrima with a full range of Residential and Commercial services.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Service Areas</h4>
+      <ul>
+        <li><a href="bowral-house-painters.html">Bowral</a></li>
+        <li><a href="bundanoon-house-painters.html">Bundanoon</a></li>
+        <li><a href="burradoo-house-painters.html">Burradoo</a></li>
+        <li><a href="moss-vale-house-painters.html">Moss Vale</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Our Work</h4>
+      <ul>
+        <li><a href="residential-house-painting.html">Residential House Painting</a></li>
+        <li><a href="commercial-painting.html">Commercial Painting</a></li>
+        <li><a href="iron-tiled-roof-painting.html">Iron &amp; Tiled Roof Painting</a></li>
+        <li><a href="floor-painting.html">Floor Painting</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Get In Touch</h4>
+      <ul>
+        <li><a href="about.html">About Dan</a></li>
+        <li><a href="contact-us.html">Contact Us</a></li>
+        <li><a href="#" class="reveal-email">Click to reveal email</a></li>
+        <li><a href="tel:0409661644">Phone: 0409 661 644</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>Copyright &copy; 2026 Dan Eaton Painting | Southern Highlands Painters. All Rights Reserved.</p>
+  </div>
+</footer>
+
+<script>
+  const toggle = document.querySelector('.menu-toggle');
+  const nav = document.querySelector('.main-nav');
+  toggle.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
+  });
+
+  const form = document.getElementById('contact-form');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const fd = new FormData(form);
+    const subject = encodeURIComponent('Website enquiry from ' + fd.get('first_name') + ' ' + fd.get('last_name'));
+    const body = encodeURIComponent(
+      'Name: ' + fd.get('first_name') + ' ' + fd.get('last_name') + '\n' +
+      'Mobile: ' + fd.get('mobile') + '\n' +
+      'Email: ' + fd.get('email') + '\n\n' +
+      fd.get('message')
+    );
+    window.location.href = 'mailto:?subject=' + subject + '&body=' + body;
+  });
+</script>
+
+</body>
+</html>

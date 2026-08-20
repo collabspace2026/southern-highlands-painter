@@ -255,11 +255,164 @@ h1,h2,h3,h4{font-family:var(--font-heading);font-weight:700;margin:0 0 16px;colo
 }
 .footer-bottom p{margin:0;font-size:13px;color:#555;}
 
+/* Page title bar (subpages) */
+.page-title-bar{
+  background:#54595f;
+  padding:48px 24px;
+}
+.page-title-bar h1{
+  max-width:var(--content-width);
+  margin:0 auto;
+  color:#fff;
+  font-size:36px;
+  text-align:left;
+}
+
+/* Prose content (subpages) */
+.page-content{
+  max-width:var(--content-width);
+  margin:0 auto;
+  padding:64px 24px;
+}
+.prose h2{font-size:26px;margin-top:40px;}
+.prose h2:first-child{margin-top:0;}
+.prose p{font-size:16px;color:#4a4a4a;max-width:900px;}
+.prose ul{max-width:900px;margin-bottom:24px;}
+.prose li{
+  font-size:16px;
+  color:#4a4a4a;
+  padding:6px 0 6px 26px;
+  position:relative;
+}
+.prose li::before{
+  content:'\2713';
+  position:absolute;
+  left:0;
+  color:var(--red);
+  font-weight:700;
+}
+.prose .btn-primary{margin-top:12px;}
+.prose img{
+  max-width:100%;
+  width:100%;
+  max-width:700px;
+  border-radius:2px;
+  margin:8px 0 28px;
+}
+.main-nav a.active{color:var(--red);}
+
+/* Two-column content (suburb pages with an image) */
+.two-col-content{
+  display:grid;
+  grid-template-columns:1.3fr 1fr;
+  gap:56px;
+  align-items:start;
+  max-width:var(--content-width);
+  margin:0 auto;
+  padding:64px 24px;
+}
+.two-col-content .prose{max-width:none;}
+.two-col-content .prose p, .two-col-content .prose li{max-width:none;}
+.two-col-content img{border-radius:2px;width:100%;object-fit:cover;position:sticky;top:24px;}
+
+/* FAQ */
+.faq-section{
+  background:var(--gray-bg);
+  padding:70px 24px;
+}
+.faq-inner{max-width:900px;margin:0 auto;}
+.faq-section h2{text-align:center;font-size:28px;margin-bottom:36px;}
+.faq-item{
+  border-bottom:1px solid var(--call-red);
+}
+.faq-item:first-child{border-top:1px solid var(--call-red);}
+.faq-q{
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  background:none;
+  border:0;
+  text-align:left;
+  padding:18px 4px;
+  font-family:var(--font-heading);
+  font-size:17px;
+  font-weight:600;
+  color:#1a1a1a;
+  cursor:pointer;
+}
+.faq-q::after{
+  content:'+';
+  font-size:22px;
+  color:var(--red);
+  flex-shrink:0;
+}
+.faq-item.open .faq-q::after{content:'\2212';}
+.faq-a{
+  max-height:0;
+  overflow:hidden;
+  transition:max-height .25s ease;
+}
+.faq-item.open .faq-a{max-height:600px;}
+.faq-a p{
+  margin:0;
+  padding:0 4px 20px;
+  font-size:15px;
+  color:#5a5a5a;
+}
+
+/* Contact page */
+.contact-grid{
+  max-width:var(--content-width);
+  margin:0 auto;
+  padding:64px 24px;
+  display:grid;
+  grid-template-columns:1fr 1.2fr;
+  gap:60px;
+}
+.contact-intro p{font-size:17px;color:#333;margin-bottom:20px;}
+.contact-intro .reveal-email{color:var(--red);font-weight:600;display:block;margin-bottom:14px;}
+.contact-intro .phone-line{display:flex;align-items:center;gap:8px;font-size:16px;color:#333;}
+.contact-form{display:flex;flex-direction:column;gap:16px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.contact-form input,
+.contact-form textarea{
+  width:100%;
+  font-family:var(--font-body);
+  font-size:15px;
+  padding:14px 16px;
+  border:1px solid #ddd;
+  border-radius:2px;
+  color:#333;
+}
+.contact-form textarea{min-height:110px;resize:vertical;}
+.contact-form .btn-primary{align-self:flex-start;border:0;font-size:15px;}
+.contact-note{font-size:13px;color:#888;margin-top:-4px;}
+
+/* Recent projects */
+.projects-section{
+  max-width:var(--content-width);
+  margin:0 auto;
+  padding:0 24px 70px;
+}
+.projects-section h2{text-align:center;font-size:28px;margin-bottom:32px;}
+.projects-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+}
+.projects-grid img{aspect-ratio:4/3;object-fit:cover;border-radius:2px;}
+
 /* Responsive */
 @media (max-width: 960px){
   .services-grid{grid-template-columns:repeat(2,1fr);}
   .about-inner{grid-template-columns:1fr;}
   .footer-main{grid-template-columns:1fr 1fr;}
+  .two-col-content{grid-template-columns:1fr;}
+  .two-col-content img{position:static;}
+  .contact-grid{grid-template-columns:1fr;}
+  .projects-grid{grid-template-columns:repeat(2,1fr);}
 }
 
 @media (max-width: 720px){
