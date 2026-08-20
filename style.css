@@ -115,7 +115,7 @@ h1,h2,h3,h4{font-family:var(--font-heading);font-weight:700;margin:0 0 16px;colo
   z-index:1;
   max-width:960px;
   text-align:center;
-  background:rgba(0,0,0,.32);
+  background:rgba(0,0,0,.52);
   padding:64px 56px;
   border-radius:2px;
 }
