@@ -75,10 +75,11 @@ h1,h2,h3,h4{font-family:var(--font-heading);font-weight:700;margin:0 0 16px;colo
   min-height:100px;
   display:flex;
   align-items:center;
-  gap:40px;
+  justify-content:center;
+  gap:56px;
 }
 .logo img{height:80px;width:auto;}
-.main-nav{flex:1;}
+.main-nav{flex:none;}
 .main-nav ul{display:flex;gap:32px;flex-wrap:wrap;}
 .main-nav a{
   font-family:var(--font-nav);
