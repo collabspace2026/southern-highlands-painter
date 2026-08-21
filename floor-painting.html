@@ -312,6 +312,15 @@
   const setScrolled = () => siteHeader.classList.toggle('scrolled', window.scrollY > 20);
   window.addEventListener('scroll', setScrolled);
   setScrolled();
+
+  document.querySelectorAll('.reveal-email').forEach(function (el) {
+    el.addEventListener('click', function () {
+      var addr = ['daneatonpainting', 'gmail.com'].join('@');
+      el.href = 'mailto:' + addr;
+      var valueEl = el.querySelector('.value');
+      if (valueEl) { valueEl.textContent = addr; } else { el.textContent = addr; }
+    });
+  });
 </script>
 
 </body>

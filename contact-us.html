@@ -247,6 +247,15 @@
   window.addEventListener('scroll', setScrolled);
   setScrolled();
 
+  document.querySelectorAll('.reveal-email').forEach(function (el) {
+    el.addEventListener('click', function () {
+      var addr = ['daneatonpainting', 'gmail.com'].join('@');
+      el.href = 'mailto:' + addr;
+      var valueEl = el.querySelector('.value');
+      if (valueEl) { valueEl.textContent = addr; } else { el.textContent = addr; }
+    });
+  });
+
   const form = document.getElementById('contact-form');
   const status = document.getElementById('form-status');
   const submitBtn = form.querySelector('button[type="submit"]');
