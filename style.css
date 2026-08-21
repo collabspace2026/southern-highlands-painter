@@ -264,18 +264,14 @@ h1,h2,h3,h4{font-family:var(--font-heading);font-weight:700;margin:0 0 16px;colo
 .brands-row img{
   width:191px;
   height:auto;
-  filter:grayscale(85%);
-  opacity:.75;
-  transition:filter .3s ease, opacity .3s ease, transform .3s ease;
+  transition:transform .3s ease;
 }
 .brands-row img:hover{
-  filter:grayscale(0%);
-  opacity:1;
   transform:scale(1.05);
 }
 
 /* Footer */
-.site-footer{background:#000;color:#fff;}
+.site-footer{background:#fff;color:var(--text);}
 .footer-main{
   max-width:var(--content-width);
   margin:0 auto;
@@ -284,12 +280,12 @@ h1,h2,h3,h4{font-family:var(--font-heading);font-weight:700;margin:0 0 16px;colo
   grid-template-columns:1.6fr 1fr 1fr 1fr;
   gap:40px;
 }
-.footer-col h4{color:#fff;font-size:17px;margin-bottom:20px;}
+.footer-col h4{color:#1a1a1a;font-size:17px;margin-bottom:20px;}
 .footer-col ul li{margin-bottom:12px;}
-.footer-col a{color:#cfcfcf;font-size:14px;}
+.footer-col a{color:var(--nav-text);font-size:14px;transition:color .2s ease;}
 .footer-col a:hover{color:var(--red);}
-.footer-about img{margin-bottom:20px;filter:brightness(0) invert(1);}
-.footer-about p{color:#b5b5b5;font-size:14px;}
+.footer-about img{margin-bottom:20px;}
+.footer-about p{color:#666;font-size:14px;}
 .footer-bottom{
   background:var(--footer-bar);
   padding:18px 24px;
@@ -434,8 +430,8 @@ h1,h2,h3,h4{font-family:var(--font-heading);font-weight:700;margin:0 0 16px;colo
   width:44px;height:44px;flex-shrink:0;
   display:flex;align-items:center;justify-content:center;
   background:var(--red);color:#fff;border-radius:50%;
-  font-size:18px;
 }
+.contact-cta .icon svg{width:20px;height:20px;fill:#fff;}
 .contact-cta .label{font-size:12px;text-transform:uppercase;letter-spacing:.5px;color:#888;display:block;}
 .contact-cta .value{font-family:var(--font-heading);font-weight:600;font-size:17px;color:#1a1a1a;}
 .contact-trust{font-size:14px;color:#666;border-top:1px solid #ddd;padding-top:20px;}
@@ -478,12 +474,16 @@ h1,h2,h3,h4{font-family:var(--font-heading);font-weight:700;margin:0 0 16px;colo
   margin-top:4px;
 }
 .contact-note{font-size:13px;color:#888;margin-top:-8px;}
+.hp-field{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;}
+.form-status{font-size:14px;margin-top:-6px;min-height:1.2em;}
+.form-status.success{color:#2a7d2a;}
+.form-status.error{color:#c0392b;}
 
 /* Recent projects */
 .projects-section{
   max-width:var(--content-width);
   margin:0 auto;
-  padding:0 24px 70px;
+  padding:70px 24px;
 }
 .projects-section h2{text-align:center;font-size:28px;margin-bottom:32px;}
 .projects-grid{

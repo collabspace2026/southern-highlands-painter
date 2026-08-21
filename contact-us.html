@@ -94,6 +94,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Semi+Condensed:wght@500;600;700&family=Roboto:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 <body>
 
@@ -131,14 +132,14 @@
 
         <div class="contact-cta-list">
           <a href="tel:0409661644" class="contact-cta">
-            <span class="icon">&#128222;</span>
+            <span class="icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6.6 10.8c1.4 2.7 3.6 4.9 6.3 6.3l2.1-2.1c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.6c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.4 0 .8-.2 1L6.6 10.8z"/></svg></span>
             <span>
               <span class="label">Call Dan directly</span>
               <span class="value">0409 661 644</span>
             </span>
           </a>
           <a href="#" class="contact-cta reveal-email">
-            <span class="icon">&#9993;</span>
+            <span class="icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M2 6c0-1.1.9-2 2-2h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6zm2 0l8 6 8-6H4zm0 2.4V18h16V8.4l-8 6-8-6z"/></svg></span>
             <span>
               <span class="label">Email</span>
               <span class="value">Click to reveal email</span>
@@ -164,8 +165,10 @@
           <input type="tel" name="mobile" placeholder="Mobile Number" required>
           <input type="email" name="email" placeholder="Email Address" required>
           <textarea name="message" placeholder="Your message, let us know you location too if you can." required></textarea>
+          <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <div class="cf-turnstile" data-sitekey="0x4AAAAAAEXO5xsPUL9Mcrig" data-action="contact"></div>
           <button type="submit" class="btn btn-primary">Submit Form</button>
-          <p class="contact-note">Submitting opens your email app with this message ready to send to Dan.</p>
+          <p class="form-status" id="form-status" role="status"></p>
         </form>
       </div>
     </div>
@@ -236,17 +239,46 @@
   setScrolled();
 
   const form = document.getElementById('contact-form');
-  form.addEventListener('submit', (e) => {
+  const status = document.getElementById('form-status');
+  const submitBtn = form.querySelector('button[type="submit"]');
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const fd = new FormData(form);
-    const subject = encodeURIComponent('Website enquiry from ' + fd.get('first_name') + ' ' + fd.get('last_name'));
-    const body = encodeURIComponent(
-      'Name: ' + fd.get('first_name') + ' ' + fd.get('last_name') + '\n' +
-      'Mobile: ' + fd.get('mobile') + '\n' +
-      'Email: ' + fd.get('email') + '\n\n' +
-      fd.get('message')
-    );
-    window.location.href = 'mailto:?subject=' + subject + '&body=' + body;
+    const payload = {
+      first_name: fd.get('first_name'),
+      last_name: fd.get('last_name'),
+      mobile: fd.get('mobile'),
+      email: fd.get('email'),
+      message: fd.get('message'),
+      website: fd.get('website'),
+      token: fd.get('cf-turnstile-response'),
+    };
+    submitBtn.disabled = true;
+    status.textContent = 'Sending...';
+    status.className = 'form-status';
+    try {
+      const res = await fetch('/api/enquiry', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      const result = await res.json();
+      if (res.ok && result.success) {
+        status.textContent = 'Thanks — your enquiry has been sent. We’ll be in touch soon.';
+        status.className = 'form-status success';
+        form.reset();
+        if (window.turnstile) window.turnstile.reset();
+      } else {
+        status.textContent = result.error || 'Something went wrong. Please call us directly on 0409 661 644.';
+        status.className = 'form-status error';
+        if (window.turnstile) window.turnstile.reset();
+      }
+    } catch {
+      status.textContent = 'Something went wrong. Please call us directly on 0409 661 644.';
+      status.className = 'form-status error';
+    } finally {
+      submitBtn.disabled = false;
+    }
   });
 </script>
 
