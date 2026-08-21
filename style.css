@@ -451,7 +451,7 @@ h1,h2,h3,h4{font-family:var(--font-heading);font-weight:700;margin:0 0 16px;colo
 .benefit-icons p{font-size:14px;color:#666;margin:0;max-width:none;}
 
 .inset-image{margin:44px 0;}
-.inset-image img{width:100%;border-radius:10px;}
+.inset-image img{width:100%;max-width:none;border-radius:10px;}
 .inset-image figcaption{
   font-size:13px;
   color:#888;
