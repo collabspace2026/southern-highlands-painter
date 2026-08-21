@@ -340,7 +340,38 @@ h1,h2,h3,h4{font-family:var(--font-heading);font-weight:700;margin:0 0 16px;colo
 }
 .main-nav a.active{color:var(--red);}
 
-/* Rich content blocks (feature cards, pull-quote, benefits, inset image, service links) */
+/* Rich content blocks (stats, feature cards, pull-quote, benefits, inset image, service links) */
+.stats-bar{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:2px;
+  background:#1a1a1a;
+  border-radius:12px;
+  overflow:hidden;
+  margin:36px 0;
+}
+.stats-bar > div{
+  background:#1a1a1a;
+  padding:28px 16px;
+  text-align:center;
+}
+.stats-bar strong{
+  display:block;
+  font-family:var(--font-heading);
+  font-size:30px;
+  font-weight:700;
+  color:var(--red);
+  line-height:1.1;
+  margin-bottom:6px;
+}
+.stats-bar span{
+  display:block;
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:.4px;
+  color:#ccc;
+}
+
 .feature-cards{
   display:grid;
   grid-template-columns:1fr 1fr;
@@ -349,44 +380,57 @@ h1,h2,h3,h4{font-family:var(--font-heading);font-weight:700;margin:0 0 16px;colo
 }
 .feature-card{
   background:var(--gray-bg);
-  border-radius:10px;
+  border-top:4px solid var(--red);
+  border-radius:2px 10px 10px 10px;
   padding:32px;
 }
 .feature-card .icon{
-  width:52px;height:52px;
+  width:56px;height:56px;
   display:flex;align-items:center;justify-content:center;
   background:var(--red);color:#fff;border-radius:50%;
   margin-bottom:18px;
 }
-.feature-card .icon svg{width:26px;height:26px;fill:#fff;}
+.feature-card .icon svg{width:28px;height:28px;fill:#fff;flex-shrink:0;}
 .feature-card h3{font-size:19px;margin-bottom:10px;}
 .feature-card p{font-size:15px;color:#555;margin:0;}
 
 .pull-quote{
   position:relative;
-  background:#fff;
-  border-left:4px solid var(--red);
-  box-shadow:0 8px 30px rgba(0,0,0,.06);
-  border-radius:0 10px 10px 0;
-  padding:32px 36px;
-  margin:40px 0;
+  background:linear-gradient(135deg, var(--red), var(--red-dark));
+  border-radius:14px;
+  padding:44px 48px;
+  margin:44px 0;
+  overflow:hidden;
+}
+.pull-quote .quote-mark{
+  position:absolute;
+  top:-10px;
+  left:20px;
+  font-family:var(--font-heading);
+  font-size:130px;
+  font-weight:700;
+  color:rgba(255,255,255,.18);
+  line-height:1;
+  pointer-events:none;
 }
 .pull-quote p{
+  position:relative;
   font-family:var(--font-heading);
-  font-size:20px;
-  font-weight:500;
-  color:#1a1a1a;
-  font-style:italic;
-  margin:0 0 12px;
+  font-size:26px;
+  line-height:1.35;
+  font-weight:600;
+  color:#fff;
+  margin:0 0 16px;
   max-width:none;
 }
 .pull-quote cite{
+  position:relative;
   display:block;
   font-family:var(--font-body);
   font-style:normal;
   font-size:14px;
   font-weight:600;
-  color:var(--red);
+  color:rgba(255,255,255,.85);
 }
 
 .benefit-icons{
@@ -423,22 +467,25 @@ h1,h2,h3,h4{font-family:var(--font-heading);font-weight:700;margin:0 0 16px;colo
 }
 .service-link-card{
   display:flex;
-  align-items:center;
+  flex-direction:column;
+  align-items:flex-start;
   gap:14px;
   background:#fff;
   border:1px solid #e8e8e8;
   border-radius:10px;
-  padding:16px 18px;
+  padding:22px 20px;
   transition:border-color .2s ease, transform .2s ease, box-shadow .2s ease;
 }
-.service-link-card:hover{border-color:var(--red);transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.06);}
+.service-link-card:hover{border-color:var(--red);transform:translateY(-4px);box-shadow:0 10px 24px rgba(0,0,0,.08);}
 .service-link-card .icon{
-  width:40px;height:40px;flex-shrink:0;
+  width:44px;height:44px;flex-shrink:0;
   display:flex;align-items:center;justify-content:center;
   background:var(--gray-bg);border-radius:50%;
 }
-.service-link-card .icon svg{width:20px;height:20px;fill:var(--red);}
-.service-link-card span{font-family:var(--font-heading);font-weight:600;font-size:15px;color:#1a1a1a;}
+.service-link-card .icon svg{width:22px;height:22px;fill:var(--red);flex-shrink:0;}
+.service-link-card .link-text{display:flex;flex-direction:column;gap:6px;}
+.service-link-card .link-text strong{font-family:var(--font-heading);font-weight:600;font-size:15px;color:#1a1a1a;}
+.service-link-card .link-text{font-size:13px;color:#777;line-height:1.5;}
 
 /* Two-column content (suburb pages with an image) */
 .two-col-content{
@@ -605,6 +652,9 @@ h1,h2,h3,h4{font-family:var(--font-heading);font-weight:700;margin:0 0 16px;colo
   .feature-cards{grid-template-columns:1fr;}
   .benefit-icons{grid-template-columns:1fr 1fr;}
   .service-links-grid{grid-template-columns:1fr;}
+  .stats-bar{grid-template-columns:1fr 1fr;}
+  .pull-quote p{font-size:20px;}
+  .pull-quote{padding:32px 28px;}
 }
 
 @media (max-width: 720px){
