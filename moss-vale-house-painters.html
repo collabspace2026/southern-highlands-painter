@@ -388,21 +388,36 @@
     <div class="footer-col footer-about">
       <img src="images/logo-SML-Southern-Highlands-Painters.gif" alt="Southern Highlands Painters logo" width="150" height="42">
       <p>Dan Eaton is a long-term Bundanoon resident, he and his team are experienced, friendly and professional. Servicing Bundanoon up to Bowral and out to Berrima with a full range of Residential and Commercial services.</p>
+      <div class="footer-contact-cols">
+        <ul>
+          <li><a href="about.html">About Dan</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+        <ul>
+          <li><a href="contact-us.html">Contact Us</a></li>
+          <li><a href="#" class="reveal-email">Click to reveal email</a></li>
+          <li><a href="tel:0409661644">Phone: 0409 661 644</a></li>
+        </ul>
+      </div>
     </div>
     <div class="footer-col">
       <h4>Service Areas</h4>
-      <ul>
-        <li><a href="berrima-house-painters.html">Berrima</a></li>
-        <li><a href="bowral-house-painters.html">Bowral</a></li>
-        <li><a href="bundanoon-house-painters.html">Bundanoon</a></li>
-        <li><a href="burradoo-house-painters.html">Burradoo</a></li>
-        <li><a href="exeter-house-painters.html">Exeter</a></li>
-        <li><a href="moss-vale-house-painters.html">Moss Vale</a></li>
-        <li><a href="penrose-house-painters.html">Penrose</a></li>
-        <li><a href="sutton-forest-house-painters.html">Sutton Forest</a></li>
-        <li><a href="tallong-house-painters.html">Tallong</a></li>
-        <li><a href="wingello-house-painters.html">Wingello</a></li>
-      </ul>
+      <div class="footer-areas-cols">
+        <ul>
+          <li><a href="berrima-house-painters.html">Berrima</a></li>
+          <li><a href="bowral-house-painters.html">Bowral</a></li>
+          <li><a href="bundanoon-house-painters.html">Bundanoon</a></li>
+          <li><a href="burradoo-house-painters.html">Burradoo</a></li>
+          <li><a href="exeter-house-painters.html">Exeter</a></li>
+        </ul>
+        <ul>
+          <li><a href="moss-vale-house-painters.html">Moss Vale</a></li>
+          <li><a href="penrose-house-painters.html">Penrose</a></li>
+          <li><a href="sutton-forest-house-painters.html">Sutton Forest</a></li>
+          <li><a href="tallong-house-painters.html">Tallong</a></li>
+          <li><a href="wingello-house-painters.html">Wingello</a></li>
+        </ul>
+      </div>
     </div>
     <div class="footer-col">
       <h4>Our Work</h4>
@@ -413,21 +428,29 @@
         <li><a href="floor-painting.html">Floor Painting</a></li>
       </ul>
     </div>
-    <div class="footer-col">
-      <h4>Get In Touch</h4>
-      <ul>
-        <li><a href="about.html">About Dan</a></li>
-        <li><a href="blog.html">Blog</a></li>
-        <li><a href="contact-us.html">Contact Us</a></li>
-        <li><a href="#" class="reveal-email">Click to reveal email</a></li>
-        <li><a href="tel:0409661644">Phone: 0409 661 644</a></li>
-      </ul>
-    </div>
   </div>
   <div class="footer-bottom">
     <p>Copyright &copy; 2026 Dan Eaton Painting | Southern Highlands Painters. All Rights Reserved.</p>
   </div>
 </footer>
+
+<script>
+  const toggle = document.querySelector('.menu-toggle');
+  const nav = document.querySelector('.main-nav');
+  toggle.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
+  });
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.querySelector('.faq-q').addEventListener('click', () => {
+      item.classList.toggle('open');
+    });
+  });
+  const siteHeader = document.querySelector('.site-header');
+  const setScrolled = () => siteHeader.classList.toggle('scrolled', window.scrollY > 20);
+  window.addEventListener('scroll', setScrolled);
+  setScrolled();
+</script>
 
 <script>
   const toggle = document.querySelector('.menu-toggle');
