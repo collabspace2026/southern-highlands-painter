@@ -167,13 +167,23 @@
         <h2>Request a Free Quote</h2>
         <p class="form-sub">Fill in the form below and we&rsquo;ll get back to you as soon as possible.</p>
         <form class="contact-form" id="contact-form">
+          <input type="text" name="name" placeholder="Full Name" required>
           <div class="form-row">
-            <input type="text" name="first_name" placeholder="First Name" required>
-            <input type="text" name="last_name" placeholder="Last Name" required>
+            <input type="tel" name="mobile" placeholder="Mobile Number" required>
+            <input type="email" name="email" placeholder="Email Address" required>
           </div>
-          <input type="tel" name="mobile" placeholder="Mobile Number" required>
-          <input type="email" name="email" placeholder="Email Address" required>
-          <textarea name="message" placeholder="Your message, let us know you location too if you can." required></textarea>
+          <select name="location" required>
+            <option value="" disabled selected>Your Location</option>
+            <option value="Bowral">Bowral</option>
+            <option value="Burradoo">Burradoo</option>
+            <option value="Berrima">Berrima</option>
+            <option value="Bundanoon">Bundanoon</option>
+            <option value="Moss Vale">Moss Vale</option>
+            <option value="Sutton Forest">Sutton Forest</option>
+            <option value="Exeter">Exeter</option>
+            <option value="Other Highlands Village">Other Highlands Village</option>
+          </select>
+          <textarea name="message" placeholder="Tell us a bit about your project" required></textarea>
           <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
           <div class="cf-turnstile" data-sitekey="0x4AAAAAAEXO5xsPUL9Mcrig" data-action="contact"></div>
           <button type="submit" class="btn btn-primary">Submit Form</button>
@@ -263,10 +273,10 @@
     e.preventDefault();
     const fd = new FormData(form);
     const payload = {
-      first_name: fd.get('first_name'),
-      last_name: fd.get('last_name'),
+      name: fd.get('name'),
       mobile: fd.get('mobile'),
       email: fd.get('email'),
+      location: fd.get('location'),
       message: fd.get('message'),
       website: fd.get('website'),
       token: fd.get('cf-turnstile-response'),
@@ -282,7 +292,7 @@
       });
       const result = await res.json();
       if (res.ok && result.success) {
-        status.textContent = 'Thanks — your enquiry has been sent. We’ll be in touch soon.';
+        status.textContent = 'Thanks — your enquiry has been sent successfully. Dan will be in touch with you soon.';
         status.className = 'form-status success';
         form.reset();
         if (window.turnstile) window.turnstile.reset();

@@ -6,14 +6,14 @@ export async function onRequestPost({ request, env }) {
     return json({ error: "Invalid request." }, 400);
   }
 
-  const { first_name, last_name, mobile, email, message, token, website } = data;
+  const { name, mobile, email, location, message, token, website } = data;
 
   // Honeypot: bots fill hidden fields. Pretend success so they don't retry.
   if (website) {
     return json({ success: true });
   }
 
-  if (!first_name || !last_name || !mobile || !email || !message || !token) {
+  if (!name || !mobile || !email || !location || !message || !token) {
     return json({ error: "Please fill in all fields." }, 400);
   }
 
@@ -31,12 +31,12 @@ export async function onRequestPost({ request, env }) {
     return json({ error: "Verification failed. Please try again." }, 403);
   }
 
-  const name = `${first_name} ${last_name}`;
-  const subject = `Website enquiry from ${name}`;
+  const subject = `Website enquiry from ${name} (${location})`;
   const body =
     `Name: ${name}\n` +
     `Mobile: ${mobile}\n` +
-    `Email: ${email}\n\n` +
+    `Email: ${email}\n` +
+    `Location: ${location}\n\n` +
     `${message}`;
 
   let emailSent = false;
@@ -51,6 +51,7 @@ export async function onRequestPost({ request, env }) {
         body: JSON.stringify({
           from: env.RESEND_FROM,
           to: env.TO_EMAIL,
+          cc: "thriiv.au@gmail.com",
           reply_to: email,
           subject,
           text: body,
@@ -68,7 +69,7 @@ export async function onRequestPost({ request, env }) {
       const webhookResp = await fetch(env.MAKE_WEBHOOK_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ first_name, last_name, mobile, email, message }),
+        body: JSON.stringify({ name, mobile, email, location, message }),
       });
       webhookSent = webhookResp.ok;
     } catch {
