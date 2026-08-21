@@ -239,7 +239,8 @@
 </ul>
 <h2>What the Community Says</h2>
 <p class="community-note">Shared by locals recommending Dan in Southern Highlands community Facebook groups.</p>
-<div class="community-quotes">
+<div class="testimonial-carousel" id="testimonial-carousel">
+  <div class="testimonial-track" id="testimonial-track">
   <div class="community-quote">
     <span class="quote-icon">&ldquo;</span>
     <p>Did a great job on my house &mdash; happy to recommend him.</p>
@@ -257,8 +258,19 @@
   </div>
   <div class="community-quote">
     <span class="quote-icon">&ldquo;</span>
+    <p>We highly recommend Dan Eaton.</p>
+    <cite>Local recommendation, community Facebook group</cite>
+  </div>
+  <div class="community-quote">
+    <span class="quote-icon">&ldquo;</span>
+    <p>Dan Eaton Painting is excellent.</p>
+    <cite>Local recommendation, community Facebook group</cite>
+  </div>
+  <div class="community-quote">
+    <span class="quote-icon">&ldquo;</span>
     <p>An absolutely excellent job on our renovation, inside and out. Highly recommend him.</p>
     <cite>Local recommendation, community Facebook group</cite>
+  </div>
   </div>
 </div>
 
@@ -335,6 +347,41 @@
       if (valueEl) { valueEl.textContent = addr; } else { el.textContent = addr; }
     });
   });
+
+  (function () {
+    const track = document.getElementById('testimonial-track');
+    if (!track) return;
+    const originalCards = Array.from(track.children);
+    const cloneCount = Math.min(3, originalCards.length);
+    for (let i = 0; i < cloneCount; i++) {
+      track.appendChild(originalCards[i].cloneNode(true));
+    }
+    let index = 0;
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return;
+
+    function step() {
+      index++;
+      const card = track.children[0];
+      const gap = parseFloat(getComputedStyle(track).gap) || 0;
+      const cardWidth = card.getBoundingClientRect().width + gap;
+      track.style.transform = 'translateX(' + (-index * cardWidth) + 'px)';
+      if (index >= originalCards.length) {
+        setTimeout(function () {
+          track.style.transition = 'none';
+          index = 0;
+          track.style.transform = 'translateX(0)';
+          track.offsetHeight; // force reflow
+          track.style.transition = '';
+        }, 650);
+      }
+    }
+
+    let timer = setInterval(step, 4000);
+    const carousel = document.getElementById('testimonial-carousel');
+    carousel.addEventListener('mouseenter', () => clearInterval(timer));
+    carousel.addEventListener('mouseleave', () => { timer = setInterval(step, 4000); });
+  })();
 </script>
 
 </body>
